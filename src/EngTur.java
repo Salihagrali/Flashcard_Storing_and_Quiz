@@ -19,13 +19,16 @@ public class EngTur implements Flashcard,Serializable{
 
     }
     @Override
-    public boolean delete(String engWord,String meaning) {
+    public boolean delete(String engWord) {
         if(!search(engWord)){
             System.out.println("No such word exists in this list");
             return false;
         }
         size--;
-        return (words.remove(engWord)) != null;
+        words.remove(engWord);
+        toFile();
+        return true;
+
 
     }
     @Override
@@ -48,5 +51,9 @@ public class EngTur implements Flashcard,Serializable{
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void printAll(){
+        words.entrySet().stream().forEach((e) -> System.out.println("Word : " + e.getKey() + " = " + e.getValue()));
     }
 }
