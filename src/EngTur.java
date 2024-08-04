@@ -62,4 +62,8 @@ public class EngTur implements Flashcard,Serializable{
     public void printAll(){
         words.entrySet().stream().forEach((e) -> System.out.println(e.getKey() + " = " + e.getValue()));
     }
+
+    public void printSpecificWord(String word){
+        words.entrySet().stream().filter(e -> e.getKey().equals(word)).forEach(e -> System.out.println(e.getKey() + " = " + e.getValue()));
+    }
 }
