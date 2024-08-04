@@ -8,6 +8,7 @@ public class EngTur implements Flashcard,Serializable{
     private int size = 0;
     public EngTur(){
         fromFile();
+        size = words.size();
     }
 
     @Override
@@ -28,8 +29,13 @@ public class EngTur implements Flashcard,Serializable{
         words.remove(engWord);
         toFile();
         return true;
+    }
 
-
+    public boolean deleteAll(){
+        if(size == 0)return false;
+        words.clear();
+        toFile();
+        return true;
     }
     @Override
     public boolean search(String engWord) {

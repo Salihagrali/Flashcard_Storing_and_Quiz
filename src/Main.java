@@ -16,20 +16,21 @@ public class Main {
 
         while (true){
             if(ans.equalsIgnoreCase("yes")){
-                System.out.println("Please enter the word itself and then meaning and pronunciation according to the example. exp: door kapı(dor)");
-                String word = in.next();
-                String meaning = in.next();
+                System.out.println("Please enter the word itself and then meaning and pronunciation according to the example. exp: door kapı(dor) " +
+                        "\nAfter entering the word first press enter then enter the meaning please");
+                String word = in.nextLine();
+                String meaning = in.nextLine();
 
                 boolean allLetters = (word.chars()
-                        .mapToObj(e -> (char)e)
+                        .mapToObj(e -> e)
                         .allMatch(Character::isLetter)) && (meaning.chars()
-                        .mapToObj(e -> (char)e)
+                        .mapToObj(e -> e)
                         .allMatch(Character::isLetter));
                 if(!allLetters){
-                    while(!StringUtils.isAlpha(word) && !StringUtils.isAlpha(meaning)){
+                    while(!StringUtils.isAlpha(word) || !StringUtils.isAlpha(meaning)){
                         System.out.println("Please enter a proper string");
-                        word = in.next();
-                        in.nextLine();
+                        word = in.nextLine();
+                        meaning = in.nextLine();
                     }
                 }
                 if(flashcard.search(word)){
