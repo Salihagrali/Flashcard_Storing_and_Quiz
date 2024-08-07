@@ -1,11 +1,13 @@
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 // From English to Turkish. exp. door = kapı (dor).
 public class EngTur implements Flashcard,Serializable{
     private static Map<String,String> words;
     private int size = 0;
+    private Scanner in = new Scanner(System.in);
     public EngTur(){
         fromFile();
         size = words.size();
@@ -65,5 +67,14 @@ public class EngTur implements Flashcard,Serializable{
 
     public void printSpecificWord(String word){
         words.entrySet().stream().filter(e -> e.getKey().equals(word)).forEach(e -> System.out.println(e.getKey() + " = " + e.getValue()));
+    }
+
+    public void showSpecificWord(){
+        System.out.println("\nWhat is the word ?");
+        String searchWord = in.nextLine();
+        boolean doesExists = search(searchWord);
+
+        System.out.println("\nThe word which is you are looking for" + ((doesExists) ? " exists. " : " does not exists in this list"));
+        if(doesExists) printSpecificWord(searchWord);
     }
 }
