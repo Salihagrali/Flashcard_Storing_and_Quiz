@@ -3,7 +3,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Scanner;
 
 public class Main {
-
+    //Make a quiz func. to test the user. Use streams and collections. That's the goal of this mini project.
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         EngTur flashcard = new EngTur();
