@@ -88,6 +88,7 @@ public class Main {
                 if(!runCondition) break;
             }
         }
+        flashcard.quiz();
 
 
 

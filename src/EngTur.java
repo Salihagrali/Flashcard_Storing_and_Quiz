@@ -1,4 +1,5 @@
 import java.io.*;
+import java.security.SecureRandom;
 import java.util.*;
 
 // From English to Turkish. exp. door = kapı (dor).
@@ -74,5 +75,40 @@ public class EngTur implements Flashcard,Serializable{
 
         System.out.println("\nThe word which is you are looking for" + ((doesExists) ? " exists. " : " does not exists in this list"));
         if(doesExists) printSpecificWord(searchWord);
+    }
+    public void quiz(){
+        System.out.println("----- QUIZ STARTING -----\n");
+        List<String> alreadyAsked = new ArrayList<>();
+        List<String> keyWords = new ArrayList<>();
+
+        for(Map.Entry<String,String> entry : words.entrySet()){
+            keyWords.add(entry.getKey());
+        }
+        Random random = new SecureRandom();
+        while(alreadyAsked.size() != words.size()){
+            int index = random.nextInt(keyWords.size());
+            String keyWord = keyWords.get(index);
+
+            if(!alreadyAsked.contains(keyWord)){
+                System.out.println("What is the meaning of " + keyWord);
+                String answer = in.nextLine();
+                if(answer.equals(words.get(keyWord))){
+                    System.out.println("CORRECT ANSWER !!!!!!!!!!");
+                    alreadyAsked.add(keyWord);
+                }
+                else{
+                    System.out.println("Unfortunately answer is wrong :(\n " +
+                             "Would you like to see the answer ? Y/N");
+                    String yesno = in.nextLine();
+                    if(yesno.equals("Y")){
+                        System.out.println("The answer is: " + words.get(keyWord));
+                        alreadyAsked.add(keyWord);
+                    }else{
+                        System.out.println("Continuing with other words. Good Luck Next Time :)");
+                    }
+                }
+            }
+        }
+        System.out.println("----- Quiz is over -----");
     }
 }
