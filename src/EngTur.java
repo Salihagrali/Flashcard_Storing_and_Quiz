@@ -1,7 +1,5 @@
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 // From English to Turkish. exp. door = kapı (dor).
 public class EngTur implements Flashcard,Serializable{
