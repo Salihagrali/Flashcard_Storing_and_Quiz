@@ -1,5 +1,5 @@
 **Hi everyone, this is my first public mini project on Github. In this project, I tried to implement different concepts that I want to practice. I used data structures and serialization to store flashcards which are maps. 
-And in other things like searching, inserting, deleting, I used streams and external classes which I needed to use maven dependencies for(StringUtils).
+And in other things like searching, inserting, deleting I used streams and external classes which I needed to use maven dependencies for(StringUtils).
 This is the maven dependency that I used:**
 ```
   <dependencies>
